@@ -13,11 +13,10 @@ const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&coun
 
 // check if all images were loaded
 function imageLoaded () {
-  console.log('imagesloaded');
   imagesLoaded++;
   if (imagesLoaded === totalImages) {
     ready = true;
-    console.log('ready =', ready);
+    loader.hidden = true;
   }
 }
 // Helper function to set attribute on DOM Element
@@ -30,11 +29,10 @@ function setAttributes(element, attributes) {
 function displayPhotos() {
   imagesLoaded = 0;
   totalImages = photosArray.length;
-  console.log('total images', totalImages);
   // Run Function for each object in photosArray
   photosArray.forEach((photo) => {
     // Create <a> to link to unsplash
-    const item = document.createElement('a');
+    const item = document.createElement('a'); 
     setAttributes(item, {
       href: photo.links.html,
       target: '_blank',
